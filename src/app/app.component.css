@@ -1,0 +1,15 @@
+.active {
+  font-weight: bold;;
+}
+
+.pending {
+  font-style: italic;
+}
+
+.confirmed {
+  color: green;
+}
+
+.waiting {
+  color: orange;
+}
