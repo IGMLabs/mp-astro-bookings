@@ -31,6 +31,7 @@ export class AppComponent {
     },
   ];
 
+
   public trips = [
     {
       id: 'space-y-moon-1',
@@ -94,6 +95,11 @@ export class AppComponent {
     },
   ];
 
+  public getTripsLength() {
+    return this.trips.length
+  }
+
+
   public reloading = false;
 
   public getAgenciesLength() {
@@ -105,8 +111,5 @@ export class AppComponent {
 
   }
 
-  public getTripsLength() {
-    return this.trips.length
-  }
 
 }
