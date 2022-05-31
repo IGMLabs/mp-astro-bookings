@@ -6,10 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public title = 'ab-astro-bookings';
-  public subtitle = 'Atro Bookings';
-  public author = 'Miguel Pantin';
-  public authorUrl = 'https://twitter.com/mikepantin'
   public agencies = [
     {
       id: 'space-y',
