@@ -1,3 +1,17 @@
 <p> 🚀 {{ title | uppercase }} </p>
 <p> {{ subtitle }}</p>
-<a [href]="authorUrl"> {{ author }}</a>
+<nav>
+  <ul>
+    <a routerLink="/contact">
+      <li>
+        Contactanos!
+      </li>
+    </a>
+    <a routerLink="/about">
+      <li>
+        ℹ About
+      </li>
+    </a>
+  </ul>
+
+</nav>
