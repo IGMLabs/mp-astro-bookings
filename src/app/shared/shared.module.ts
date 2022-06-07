@@ -4,8 +4,7 @@ import { ReloadingComponent } from './components/reloading/reloading.component';
 import { AgenciesList } from './components/agencies/agencies.list';
 import { TripsList } from './components/trips/trips.list';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   exports: [
     ReloadingComponent,
     RouterModule,
+    FormsModule,
     ReactiveFormsModule,
     AgenciesList,
     TripsList

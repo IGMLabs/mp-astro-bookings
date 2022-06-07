@@ -1,1 +1,38 @@
-<p>contact works!</p>
+<form [formGroup]="form">
+  <div>
+    <div>
+      <label for="name">Name:</label>
+      <input type="text"
+            id="name"
+            name="name"
+            formControlName="name"
+            placeholder="Your name"
+            [attr.aria-invalid]="mustShowError('name')"/>
+      <small *ngIf="mustShowError('name')">{{ getErrorMessage('name') }}</small>
+    </div>
+    <div>
+      <label for="email">Email Address</label>
+      <input type="text"
+            id="email"
+            name="email"
+            formControlName="email"
+            placeholder="Your email"
+            [attr.aria-invalid]="mustShowError('email')"/>
+      <small *ngIf="mustShowError('email')">{{ getErrorMessage('email') }}</small>
+    </div>
+
+    <div>
+      <label for="message">Message:</label>
+      <textarea type="text"
+            id="message"
+            name="message"
+            formControlName="message"
+            placeholder="Message"
+            [attr.aria-invalid]="mustShowError('message')">
+      </textarea>
+      <small *ngIf="mustShowError('message')">{{ getErrorMessage('message') }}</small>
+    </div>
+
+    <button [disabled]="form.invalid" (click)="onSave()"></button>
+  </div>
+</form>
