@@ -8,14 +8,14 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { FormBase } from 'src/app/core/forms/form.base';
 
 @Component({
   selector: 'app-new-agency-form',
   templateUrl: './new-agency.form.html',
   styleUrls: ['./new-agency.form.css'],
 })
-export class NewAgencyForm implements OnInit {
-  public form: FormGroup;
+export class NewAgencyFor extends FormBase implements OnInit {
   public ranges = [
     { id: 'Orbital', name: '🌎 Orbiting around the earth' },
     {
@@ -26,26 +26,15 @@ export class NewAgencyForm implements OnInit {
   ];
   public statuses = ['Active', 'Pending'];
 
-  constructor(formBuilder: FormBuilder, public fms : FormMessagesService, public fus: FormUtilityService) {
+  constructor(formBuilder: FormBuilder, fms : FormMessagesService, public fus: FormUtilityService) {
+    super(fms)
     this.form = formBuilder.group({
       name: new FormControl('', [Validators.required, Validators.minLength(2)]),
       range: new FormControl('', [Validators.required]),
       status: new FormControl(this.statuses[0]),
     });
   }
-  public hasError(controlName: string): boolean {
-    const control = this.getControl(controlName);
-    if (!control) return false;
-    return control.invalid;
-  }
 
-  public mustShowMessage(controlName: string): boolean {
-    return this.fms.mustShowMessage(this.form, controlName)
-  }
-
-  public getErrorMessage(controlName: string): string {
-    return this.fms.getErrorMessage(this.form, controlName)
-  }
 
   public onSubmitClick() {
     const { name, range, status } = this.form.value;
@@ -58,9 +47,6 @@ export class NewAgencyForm implements OnInit {
     return this.fus.getDashIdAgency(str)
   }
 
-  private getControl(controlName: string): AbstractControl | null {
-    return this.form.get(controlName);
-  }
 
   ngOnInit(): void {
   }

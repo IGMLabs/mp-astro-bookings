@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { FormValidationsService } from '../../core/forms/form-validations.service';
 import { FormMessagesService } from '../../core/forms/form-messages.service';
+import { FormBase } from 'src/app/core/forms/form.base';
 
 interface Contact {
   name: string;
@@ -14,12 +15,10 @@ interface Contact {
   templateUrl: './register.form.html',
   styleUrls: ['./register.form.css']
 })
-export class RegisterForm {
+export class RegisterForm extends FormBase {
 
-  public form: FormGroup;
-
-  constructor(formBuilder: FormBuilder, fvs : FormValidationsService, public fms : FormMessagesService) {
-
+  constructor(formBuilder: FormBuilder, fvs : FormValidationsService, fms : FormMessagesService) {
+    super(fms)
 
     this.form = formBuilder.group({
       name: new FormControl('', [Validators.required, Validators.minLength(2)]),
@@ -31,24 +30,6 @@ export class RegisterForm {
     {
       validators: [fvs.passwordMatch]
     })
-  }
-
-
-
-  public hasError(controlName: string) {
-    const control = this.getControl(controlName)
-    if (!control) return false;
-    return control.invalid
-  }
-
-  public mustShowError(controlName: string) {
-    const control = this.getControl(controlName)
-    if (!control) return false;
-    return control.invalid && control.touched
-  }
-
-  public getErrorMessage(controlName: string) {
-    return this.fms.getErrorMessage(this.form, controlName)
   }
 
   public getPasswordMatchMessage() {
@@ -64,10 +45,6 @@ export class RegisterForm {
     const { email, password } = this.form.value;
     const register = { email, password};
     console.warn('Send Contact message', register)
-  }
-
-  getControl(controlName: string): AbstractControl | null {
-    return this.form.get(controlName)
   }
 
 }
