@@ -8,8 +8,8 @@
             name="name"
             formControlName="name"
             placeholder="Your name"
-            [attr.aria-invalid]="mustShowError('name')"/>
-      <small *ngIf="mustShowError('name')">{{ getErrorMessage('name') }}</small>
+            [attr.aria-invalid]="mustShowMessage('name')"/>
+      <small *ngIf="mustShowMessage('name')">{{ getErrorMessage('name') }}</small>
     </div>
     <div>
       <label for="email">Email Address</label>
@@ -18,8 +18,8 @@
             name="email"
             formControlName="email"
             placeholder="Your email"
-            [attr.aria-invalid]="mustShowError('email')"/>
-      <small *ngIf="mustShowError('email')">{{ getErrorMessage('email') }}</small>
+            [attr.aria-invalid]="mustShowMessage('email')"/>
+      <small *ngIf="mustShowMessage('email')">{{ getErrorMessage('email') }}</small>
     </div>
     <div>
       <label for="password">Password Address</label>
@@ -28,8 +28,8 @@
             name="password"
             formControlName="password"
             placeholder="Your password"
-            [attr.aria-invalid]="mustShowError('password')"/>
-      <small *ngIf="mustShowError('password')">{{ getErrorMessage('password') }}</small>
+            [attr.aria-invalid]="mustShowMessage('password')"/>
+      <small *ngIf="mustShowMessage('password')">{{ getErrorMessage('password') }}</small>
     </div>
     <div>
       <label for="confirmPassword">Confirm Password</label>
@@ -38,7 +38,7 @@
             name="confirmPassword"
             formControlName="confirmPassword"
             placeholder="Confirm Password"
-            [attr.aria-invalid]="mustShowError('confirmPassword')"/>
+            [attr.aria-invalid]="mustShowMessage('confirmPassword')"/>
       <small *ngIf="getPasswordMatchMessage()">{{ getPasswordMatchMessage() }}</small>
     </div>
 
@@ -47,9 +47,9 @@
       id="acceptTerms"
       name="acceptTerms"
       formControlName="acceptTerms"
-      [attr.aria-invalid]="mustShowError('acceptTerms')"/>
+      [attr.aria-invalid]="mustShowMessage('acceptTerms')"/>
       <label for="acceptTerms">Accept Terms</label>
-      <small *ngIf="mustShowError('acceptTerms')">{{ getErrorMessage('acceptTerms') }}</small>
+      <small *ngIf="mustShowMessage('acceptTerms')">{{ getErrorMessage('acceptTerms') }}</small>
     </div>
 
     <button [disabled]="form.invalid" (click)="onSave()"></button>

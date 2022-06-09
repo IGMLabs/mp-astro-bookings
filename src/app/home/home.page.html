@@ -1,4 +1,5 @@
-  <app-agencie-list></app-agencie-list>
+<app-agencie-list [agencies]="agencies"
+(reload)="onReload()"></app-agencie-list>
   <app-trips-list></app-trips-list>
   <app-reloading *ngIf="reloading"></app-reloading>
   <button (click)="reload()"> ♻ </button>

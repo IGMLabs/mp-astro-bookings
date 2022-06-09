@@ -8,8 +8,8 @@
             name="email"
             formControlName="email"
             placeholder="Your email"
-            [attr.aria-invalid]="mustShowError('email')"/>
-      <small *ngIf="mustShowError('email')">{{ getErrorMessage('email') }}</small>
+            [attr.aria-invalid]="mustShowMessage('email')"/>
+      <small *ngIf="mustShowMessage('email')">{{ getErrorMessage('email') }}</small>
     </div>
     <div>
       <label for="password">Password</label>
@@ -18,8 +18,8 @@
             name="password"
             formControlName="password"
             placeholder="Your password"
-            [attr.aria-invalid]="mustShowError('password')"/>
-      <small *ngIf="mustShowError('password')">{{ getErrorMessage('password') }}</small>
+            [attr.aria-invalid]="mustShowMessage('password')"/>
+      <small *ngIf="mustShowMessage('password')">{{ getErrorMessage('password') }}</small>
     </div>
 
     <button [disabled]="form.invalid" (click)="onSave()"></button>

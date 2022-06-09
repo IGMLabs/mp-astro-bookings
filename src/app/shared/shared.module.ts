@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   exports: [
+    AgenciesList,
     ReloadingComponent,
     RouterModule,
     FormsModule,

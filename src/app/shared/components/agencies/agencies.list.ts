@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { AgenciesApi } from 'src/app/core/api/agencies.api';
+import { Agency } from 'src/app/core/api/agency.interface';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-agencie-list',
@@ -7,28 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgenciesList implements OnInit {
 
-  public agencies = [
-    {
-      id: 'space-y',
-      name: 'Space Y',
-      range: 'Interplanetary',
-      status: 'Active',
-    },
-    {
-      id: 'green-origin',
-      name: 'Green Origin',
-      range: 'Orbital',
-      status: 'Active',
-    },
-    {
-      id: 'virgin-way',
-      name: 'Virgin Way',
-      range: 'Orbital',
-      status: 'Pending',
-    },
-  ];
+  @Input() agencies: Agency[] = [];
+  @Output() private reload = new EventEmitter();
+  public reloading = false;
 
-  constructor() { }
+  public onReloadClick(list: string) {
+    this.reloading = true;
+    console.log('reloading' + list);
+    this.reload.emit();
+
+  }
 
   ngOnInit(): void {
   }

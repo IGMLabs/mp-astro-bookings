@@ -5,24 +5,13 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import { Agency } from 'src/app/core/api/agency.interface';
 import { FormMessagesService } from 'src/app/core/forms/form-messages.service';
 import { FormValidationsService } from 'src/app/core/forms/form-validations.service';
 import { FormBase } from 'src/app/core/forms/form.base';
 import { FormUtilityService } from '../../core/forms/form-utility.service';
-
-/**
- *
- * {
-      id: 'space-y-moon-1',
-      agencyId: 'space-y',
-      destination: 'The Moon', <2,20>
-      places: 14, <1,10>
-      startDate: '2023-01-01',
-      endDate: '2023-02-01',
-      flightPrice: 1200000 <1000000, 10000000>,
-      }
- *
- */
+import { AgenciesApi } from '../../core/api/agencies.api';
+import { TripsApi } from '../../core/api/trips.api';
 
 @Component({
   selector: 'app-new-trip-form',
@@ -31,34 +20,20 @@ import { FormUtilityService } from '../../core/forms/form-utility.service';
 })
 export class NewTripForm extends FormBase implements OnInit {
 
-  public agencies = [
-    {
-      id: 'space-y',
-      name: 'Space Y',
-      range: 'Interplanetary',
-      status: 'Active',
-    },
-    {
-      id: 'green-origin',
-      name: 'Green Origin',
-      range: 'Orbital',
-      status: 'Active',
-    },
-    {
-      id: 'virgin-way',
-      name: 'Virgin Way',
-      range: 'Orbital',
-      status: 'Pending',
-    },
-  ];
+  public agencies! : Agency[];
 
   constructor(
     formBuilder: FormBuilder,
     fvs: FormValidationsService,
     fms: FormMessagesService,
-    public fus : FormUtilityService
+    public fus : FormUtilityService,
+    private agenciesApi: AgenciesApi,
+    public tripsApi: TripsApi
   ) {
     super(fms);
+
+    this.agencies = agenciesApi.getAll();
+
     this.form = formBuilder.group(
       {
         agencyId: new FormControl('', [Validators.required]),
@@ -85,7 +60,7 @@ export class NewTripForm extends FormBase implements OnInit {
     const { agencyId, destination } = this.form.value;
     const id = this.getDashIdTrip(destination, agencyId);
     const newTripData = { id, agencyId, destination };
-    console.warn('Send trip data ', newTripData);
+    this.tripsApi.post(newTripData)
   }
 
   public getDatesRangeMessage() {
