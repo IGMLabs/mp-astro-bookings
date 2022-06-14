@@ -1,4 +1,3 @@
-import { identifierName } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -8,6 +7,7 @@ export class FormUtilityService {
 
   constructor() { }
 
+
   public getDashIdTrip(destino: string, id: string): string {
     const str = destino + ' ' + id;
     return str.toLocaleLowerCase().replace(/ /g, '-');
@@ -16,4 +16,6 @@ export class FormUtilityService {
   public getDashIdAgency(str: string): string {
     return str.toLocaleLowerCase().replace(/ /g, '-');
   }
+
+
 }

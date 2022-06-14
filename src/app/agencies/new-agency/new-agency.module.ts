@@ -10,13 +10,12 @@ import { SharedModule } from '../../shared/shared.module';
 @NgModule({
   declarations: [
     NewAgencyPage,
-    NewAgencyPage,
     NewAgencyForm
   ],
   imports: [
     CommonModule,
-    SharedModule,
-    NewAgencyRoutingModule
+    NewAgencyRoutingModule,
+    SharedModule
   ]
 })
 export class NewAgencyModule { }

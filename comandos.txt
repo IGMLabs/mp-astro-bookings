@@ -1,0 +1,16 @@
+
+ng g m bookings --route=bookings --module=app
+
+ng g c bookings --type=page
+
+ng g m bookings/booking --module=bookings --route=booking/:id
+
+ng g c bookings/booking --type=page
+
+ng g m bookings/new-booking --module=bookings --route=booking/new
+
+ng g c bookings/new-booking --type=page
+
+ng g c bookings/new-booking --type=form
+
+ng g c bookings/booking --type=view

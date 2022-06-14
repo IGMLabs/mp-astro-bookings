@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { NewTripRoutingModule } from './new-trip-routing.module';
 import { NewTripPage } from './new-trip.page';
-import { SharedModule } from '../../shared/shared.module';
 import { NewTripForm } from './new-trip.form';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -19,3 +19,4 @@ import { NewTripForm } from './new-trip.form';
   ]
 })
 export class NewTripModule { }
+

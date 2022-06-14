@@ -1,0 +1,38 @@
+
+<form [formGroup]="form">
+  <div>
+    <label for="tripId"> Trip Id</label>
+    <select name="tripId"
+            formControlName="tripId">
+      <option value="" selected>Select a Trip Id</option>
+      <option *ngFor="let trip of trips"
+              [value]="trip.id">{{ trip.id }}</option>
+    </select>
+    <small *ngIf="mustShowMessage('tripId')">{{ getErrorMessage('tripId') }}</small>
+  </div>
+  <app-template-control [form]="form"
+  formControlName="passengerName"
+  label="Passenger Name"
+  placeholder="Passenger Name"></app-template-control>
+
+  <app-template-control [form]="form"
+  formControlName="date"
+  label="Date"
+  placeholder="Date"></app-template-control>
+  <app-template-control [form]="form"
+  formControlName="luggageKilos"
+  label="Luggage Kilos"
+  placeholder="Luggage Kilos"></app-template-control>
+
+  <div>
+    <label for="hasPremiumFoodPrice"> Premium Food</label>
+    <input name="hasPremiumFoodPrice"
+           type="checkbox"
+           formControlName="hasPremiumFoodPrice"
+           [attr.aria-invalid]="hasError('hasPremiumFoodPrice')">
+    <small *ngIf="mustShowMessage('hasPremiumFoodPrice')">{{ getErrorMessage('hasPremiumFoodPrice') }}</small>
+  </div>
+
+  <button [disabled]="form.invalid"
+          (click)="onSubmitClick()">Save</button>
+</form>

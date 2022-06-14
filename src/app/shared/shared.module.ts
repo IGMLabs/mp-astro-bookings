@@ -1,31 +1,41 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReloadingComponent } from './components/reloading/reloading.component';
+import { ReloadingComponent } from './reloading/reloading.component';
 import { AgenciesList } from './components/agencies/agencies.list';
 import { TripsList } from './components/trips/trips.list';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BookingsList } from './components/bookings/bookings.list';
+import { EmailControl } from './controls/email/email.control';
+import { TemplateControl } from './controls/template/template.control';
+import { SearchControl } from './controls/search/search.control';
+
 
 
 @NgModule({
   declarations: [
     ReloadingComponent,
     AgenciesList,
-    TripsList
+    TripsList,
+    BookingsList,
+    EmailControl,
+    TemplateControl,
+    SearchControl,
   ],
   imports: [
     CommonModule,
     RouterModule,
-    ReactiveFormsModule
-  ],
-  exports: [
-    AgenciesList,
-    ReloadingComponent,
-    RouterModule,
-    FormsModule,
     ReactiveFormsModule,
+  ],
+  exports:[
+    RouterModule,
+    ReactiveFormsModule,
+    ReloadingComponent,
     AgenciesList,
-    TripsList
+    TripsList,
+    BookingsList,
+    EmailControl,
+    TemplateControl
   ]
 })
 export class SharedModule { }

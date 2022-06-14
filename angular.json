@@ -3,9 +3,33 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "bases": {
+    "lj-astro-bookings": {
       "projectType": "application",
       "schematics": {
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:component": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:resolver": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        },
         "@schematics/angular:application": {
           "strict": true
         }
@@ -17,7 +41,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/bases",
+            "outputPath": "dist/lj-astro-bookings",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,6 +51,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@picocss/pico/css/pico.fluid.classless.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -68,10 +93,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "bases:build:production"
+              "browserTarget": "lj-astro-bookings:build:production"
             },
             "development": {
-              "browserTarget": "bases:build:development"
+              "browserTarget": "lj-astro-bookings:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +104,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "bases:build"
+            "browserTarget": "lj-astro-bookings:build"
           }
         },
         "test": {
@@ -102,5 +127,5 @@
       }
     }
   },
-  "defaultProject": "bases"
+  "defaultProject": "lj-astro-bookings"
 }

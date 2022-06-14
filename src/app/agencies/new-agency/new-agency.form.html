@@ -1,14 +1,10 @@
 <form [formGroup]="form">
   <fieldset>
-    <div>
-      <label for="name"> Agency name </label>
-      <input name="name"
-             id="name"
-             type="text"
-             formControlName="name"
-             [attr.aria-invalid]="hasError('name')">
-      <small *ngIf="mustShowMessage('name')">{{ getErrorMessage('name') }}</small>
-    </div>
+    <app-template-control [form]="form"
+    formControlName="name"
+    label="Name"
+    placeholder="Your name"></app-template-control>
+
     <div>
       <label for="range"> Operation range </label>
       <select name="range"
@@ -18,7 +14,9 @@
         <option selected
                 value="">Select a range</option>
         <option *ngFor="let range of ranges"
-                [value]="range.id">{{ range.name }}</option>
+                [value]="range.id">
+          {{ range.name }}
+        </option>
       </select>
       <small *ngIf="mustShowMessage('range')">{{ getErrorMessage('range') }}</small>
     </div>

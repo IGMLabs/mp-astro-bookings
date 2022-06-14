@@ -1,17 +1,7 @@
-<p> 🚀 {{ title | uppercase }} </p>
-<p> {{ subtitle }}</p>
-<nav>
-  <ul>
-    <a routerLink="/contact">
-      <li>
-        Contactanos!
-      </li>
-    </a>
-    <a routerLink="/about">
-      <li>
-        ℹ About
-      </li>
-    </a>
-  </ul>
-
-</nav>
+<footer>
+  <app-title></app-title>
+  <p>{{ subtitle }}</p>
+  <a [href]="authorUrl">{{ author }}</a>
+  <a routerLink="/contact">Contact</a>
+  <a routerLink="/about">About</a>
+</footer>

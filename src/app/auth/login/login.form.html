@@ -1,27 +1,12 @@
 <form [formGroup]="form">
-  <div>
 
-    <div>
-      <label for="email">Email Address</label>
-      <input type="text"
-            id="email"
-            name="email"
-            formControlName="email"
-            placeholder="Your email"
-            [attr.aria-invalid]="mustShowMessage('email')"/>
-      <small *ngIf="mustShowMessage('email')">{{ getErrorMessage('email') }}</small>
-    </div>
-    <div>
-      <label for="password">Password</label>
-      <input type="password"
-            id="password"
-            name="password"
-            formControlName="password"
-            placeholder="Your password"
-            [attr.aria-invalid]="mustShowMessage('password')"/>
-      <small *ngIf="mustShowMessage('password')">{{ getErrorMessage('password') }}</small>
-    </div>
+  <app-email-control formControlName="email"></app-email-control>
 
-    <button [disabled]="form.invalid" (click)="onSave()"></button>
-  </div>
+  <app-template-control [form]="form"
+  formControlName="password"
+  label="Password"
+  placeholder="Your password"></app-template-control>
+
+  <button [disabled]="form.invalid" (click)="onSave()">Save</button>
+
 </form>

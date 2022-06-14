@@ -1,0 +1,6 @@
+<app-new-booking-form
+  *ngIf="(trips$ | async) as trips"
+  [trips]="trips"
+  (save)="onSave($event)"
+>
+</app-new-booking-form>

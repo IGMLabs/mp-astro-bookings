@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { TitleComponent } from './title/title.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -15,11 +16,12 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
-  exports: [
+  exports:[
     HeaderComponent,
     FooterComponent
   ]
 })
-export class CoreModule { }
+export class CoreModule {}

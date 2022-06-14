@@ -15,47 +15,31 @@
       </select>
       <small *ngIf="mustShowMessage('agencyId')">{{ getErrorMessage('agencyId') }}</small>
     </div>
-    <div>
-      <label for="destination"> Destination </label>
-      <input name="destination"
-             id="destination"
-             type="text"
-             formControlName="destination"
-             [attr.aria-invalid]="hasError('destination')">
-      <small *ngIf="mustShowMessage('destination')">{{ getErrorMessage('destination') }}</small>
-    </div>
-    <div>
-      <label for="places"> Places </label>
-      <input name="places"
-             id="places"
-             type="number"
-             formControlName="places"
-             [attr.aria-invalid]="hasError('places')">
-      <small *ngIf="mustShowMessage('places')">{{ getErrorMessage('places') }}</small>
-    </div>
-    <div>
-      <label for="startDate"> Start Date </label>
-      <input name="startDate"
-             id="startDate"
-             type="date"
-             formControlName="startDate"
-             [attr.aria-invalid]="hasError('startDate')">
-      <small *ngIf="mustShowMessage('startDate')">{{ getErrorMessage('startDate') }}</small>
-    </div>
-    <div>
-      <label for="endDate"> End Date </label>
-      <input name="endDate"
-             id="endDate"
-             type="date"
-             formControlName="endDate"
-             [attr.aria-invalid]="hasError('endDate')">
-      <small *ngIf="mustShowMessage('endDate')">{{ getErrorMessage('endDate') }}</small>
-    </div>
+
+    <app-template-control [form]="form"
+  formControlName="destination"
+  label="Destination"
+  placeholder="Destination"></app-template-control>
+
+  <app-template-control [form]="form"
+  formControlName="places"
+  label="Places"
+  placeholder="Places"></app-template-control>
+
+  <app-template-control [form]="form"
+  formControlName="startDate"
+  label="Start Date"
+  placeholder="Start date"></app-template-control>
+
+  <app-template-control [form]="form"
+  formControlName="endDate"
+  label="End Date"
+  placeholder="End date"></app-template-control>
     <small>{{ getDatesRangeMessage() }}</small>
   </fieldset>
   <div>
     <button type="submit"
-            (click)="onSubmitClick()"
+            (click)="onSave()"
             [disabled]="form.invalid"> Send new trip data </button>
   </div>
 </form>

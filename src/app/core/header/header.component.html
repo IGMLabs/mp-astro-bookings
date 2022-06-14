@@ -1,23 +1,33 @@
 <nav>
   <ul>
-    <a routerLink="/">
-      <li>
-      <app-title></app-title>
-      </li>
-    </a>
+    <li>
+      <a routerLink="">
+        <strong>
+          <app-title></app-title>
+        </strong>
+      </a>
+    </li>
   </ul>
+  <span>
+    <span *ngIf="isWorking">👷‍♂️</span>
+    <span *ngIf="!isWorking">🥱</span>
+    <span *ngIf="hasError">💣</span>
+  </span>
   <ul>
     <li>
-      <a routerLink="/agencies">👨‍💼 Agencies</a>
+      <a routerLink="/bookings">Bookings</a>
     </li>
     <li>
-      <a routerLink="/trips">🛩 Trips</a>
+      <a routerLink="/agencies">Agencias</a>
     </li>
     <li>
-      <a routerLink="auth/register">📋 Register</a>
+      <a routerLink="/trips">Viajes</a>
     </li>
     <li>
-      <a routerLink="auth/login">🔐 Login</a>
+      <a routerLink="/auth/register">Registro</a>
+    </li>
+    <li>
+      <a routerLink="/auth/login">Login</a>
     </li>
   </ul>
 </nav>

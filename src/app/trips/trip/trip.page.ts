@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Trip } from 'src/app/core/api/trip.interface';
-import { TripsApi } from 'src/app/core/api/trips.api';
+import { TripsApi } from '../../core/api/trips.api';
+import { Trip } from '../../core/api/trip.interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-trip',
@@ -10,13 +11,14 @@ import { TripsApi } from 'src/app/core/api/trips.api';
 })
 export class TripPage implements OnInit {
 
-  public tripId:string;
-  public trip?: Trip;
+  public tripId: string;
+  public trips$ : Observable<Trip>;
 
-  constructor(route: ActivatedRoute, tripsApi: TripsApi) {
+  constructor(route: ActivatedRoute,tripApi:TripsApi) {
     this.tripId = route.snapshot.paramMap.get('id') || '';
-    this.trip = tripsApi.getById(this.tripId);
+    this.trips$ = tripApi.getById$(this.tripId);
   }
+
 
   ngOnInit(): void {
   }

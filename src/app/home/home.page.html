@@ -1,5 +1,7 @@
-<app-agencie-list [agencies]="agencies"
-(reload)="onReload()"></app-agencie-list>
-  <app-trips-list></app-trips-list>
-  <app-reloading *ngIf="reloading"></app-reloading>
-  <button (click)="reload()"> ♻ </button>
+
+<app-agencies-list *ngIf="(agencies$ | async ) as agencies" [agencies]="agencies"></app-agencies-list>
+<app-trips-list *ngIf="(trips$ | async) as trips" [trips]="trips" ></app-trips-list>
+<app-bookings-list *ngIf="(bookings$ | async) as bookings" [bookings]="bookings"></app-bookings-list>
+
+
+<app-reloading *ngIf="reloading"></app-reloading>

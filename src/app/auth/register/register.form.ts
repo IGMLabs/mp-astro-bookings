@@ -1,50 +1,56 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { FormValidationsService } from '../../core/forms/form-validations.service';
+import { FormUtilityService } from '../../core/forms/form-utility.service';
 import { FormMessagesService } from '../../core/forms/form-messages.service';
-import { FormBase } from 'src/app/core/forms/form.base';
-
-interface Contact {
-  name: string;
-  email: string;
-  message: string;
-}
 
 @Component({
   selector: 'app-register-form',
   templateUrl: './register.form.html',
   styleUrls: ['./register.form.css']
 })
-export class RegisterForm extends FormBase {
+export class RegisterForm implements OnInit {
+  public form: FormGroup;
 
-  constructor(formBuilder: FormBuilder, fvs : FormValidationsService, fms : FormMessagesService) {
-    super(fms)
+  constructor(formBuilder: FormBuilder,fvs: FormValidationsService, public fus: FormUtilityService, public fms: FormMessagesService) {
 
     this.form = formBuilder.group({
       name: new FormControl('', [Validators.required, Validators.minLength(2)]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]),
-      confirmPassword: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
+      confirmPassword: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
       acceptTerms: new FormControl(false, [Validators.requiredTrue])
-    },
-    {
-      validators: [fvs.passwordMatch]
-    })
+    }, {
+      validators: [fvs.passwordMatch],
+    });
+
   }
 
-  public getPasswordMatchMessage() {
-    const errors = this.form.errors;
-    if (!errors) return ''
-    if(errors['passwordMatch']) {
-      return errors['passwordMatch']
-    }
+  ngOnInit(): void {
+  }
 
+
+  public hasError(controlName: string): boolean {
+    return this.fms.hasError(this.form, controlName);
+  }
+
+  public mustShowMessage(controlName: string): boolean {
+    return this.fms.mustShowMessage(this.form, controlName);
+  }
+
+
+  public getErrorMessage(controlName: string): string {
+    return this.fms.getErrorMessage(this.form, controlName);
+  }
+
+  public getPasswordMatchMessage(): string {
+    return this.fms.getPasswordMatchMessage(this.form);
   }
 
   public onSave() {
-    const { email, password } = this.form.value;
-    const register = { email, password};
-    console.warn('Send Contact message', register)
+    const { name, email, password } = this.form.value;
+    const register = { name, email, password };
+    console.warn('Send register',register);
   }
 
 }

@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class FormValidationsService {
+
   constructor() {}
 
   public passwordMatch(form: AbstractControl): ValidationErrors | null {
@@ -38,4 +39,23 @@ export class FormValidationsService {
     }
     return null;
   }
+
+  dateControlBookings(control: AbstractControl): ValidationErrors | null {
+    const date = control.value;
+    const dateTo = new Date();
+    if (!date) {
+      return {
+        dateControl: 'Dates dont exist',
+      };
+    }
+    const dateDate= new Date(date);
+    if (dateDate < dateTo) {
+      return {
+        dateControl: 'Dates wrong',
+      };
+    }
+    return null;
+  }
+
+
 }
